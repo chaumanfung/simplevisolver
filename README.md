@@ -10,6 +10,7 @@
 # run2.py: algorithms as stated in the chapter
 #####
 # To Run: 
-# Change the name of the example file you want to run in the import line of varfunc_s.pyt and run.py.
+# Change the name of the example file you want to run in the import line of varfunc_st.py and run.py.
+# Change the starting values and epsilon.
 # Change the example file (varfunc_egx.py) if necessary; change number of manufacturers, retailers, markets, and the functions (production, cost and demand).
 # Run the run2.py.
