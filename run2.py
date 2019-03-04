@@ -4,14 +4,17 @@ Created on Mon Mar  4 11:58:39 2019
 
 @author: chauman.fung@kuleuven.be
 """
-
+# sol
 import numpy as np
 from sympy import *
-from varfunc_eg8 import *
+from varfunc_eg3 import *
 from varfunc_st import *
 from starting import *
+import matplotlib.pyplot as plt
 
-
+datax=[]
+dataq2=[]
+datap2=[]
 # take values from starting point
 list1=compare2(list0)
 print(list1)
@@ -40,6 +43,16 @@ for k in range(k,maxiter):
         print('Solution ='+str(list1))
         print('end with iterations ='+ str(k))
         break
+
+    datax.append(k)
+    dataq2.append(list1[0])
+    datap2.append(list1[-1])
     k = k + 1 
-print('end')    
     
+print('end')
+plt.scatter(datax,dataq2)
+plt.show()
+#plt.savefig('q1.png')
+plt.scatter(datax,datap2)
+plt.savefig('p1.png')
+#plt.show()

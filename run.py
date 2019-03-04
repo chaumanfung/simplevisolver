@@ -5,15 +5,16 @@ Created on Tue Feb 26 20:15:23 2019
 @author: chauman.fung@kuleuven.be
 """
 
-#to clear: %reset
-
-#import itertools
 import numpy as np
 from sympy import *
-from varfunc_def4 import *
+from varfunc_eg1 import *
 from varfunc_st import *
 from starting import *
+import matplotlib.pyplot as plt
 
+datax=[]
+dataq=[]
+datap=[]
 
 # take values from starting point
 list1=compare3(list0)
@@ -43,6 +44,17 @@ for k in range(k,maxiter):
         print('Solution ='+str(list1))
         print('end with iterations ='+ str(k))
         break
+    datax.append(k)
+    dataq.append(list1[0])
+    datap.append(list1[-1])
     k = k + 1 
-print('end')    
+    
+print('end')
+plt.scatter(datax,dataq)
+plt.show()
+#plt.savefig('q2.png')
+plt.scatter(datax,datap)
+plt.show()
+#plt.savefig('p2.png')
+   
     
