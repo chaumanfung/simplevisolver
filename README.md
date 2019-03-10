@@ -1,5 +1,5 @@
 # simplevisolver (created in Python 2.7)
-restructured on 10 march 
+restructured on 10 march \
 calculations of profits and surpluses added.
 
 # modified projection method and Euler method
