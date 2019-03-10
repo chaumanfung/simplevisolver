@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Mar  4 11:58:39 2019
+Created on Sun Mar 10 12:22:28 2019
 
 @author: chauman.fung@kuleuven.be
 """
@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import timeit #use timer
 start_time = timeit.default_timer()
 
-from def_class7 import *
+from def_class8 import *
 from starting import *
 
 datax=[]
@@ -18,7 +18,7 @@ dataq=[]
 datap=[]
 
 # take values from starting point
-list1=compare2(list0)
+list1=compare3(list0)
 
 # start iterations
 print('number of iterations=',1) 
@@ -33,7 +33,7 @@ k=2
 for k in range(k,maxiter):
     print('number of iterations=',k)    
     x=list(list1)
-    compare2(list1)
+    compare3(list1)
     if sum(bool(Abs(list1[i]-x[i]) < epsilon) for i in range(0,len(L)))<len(L):
         for i in range(0,len(L)):       
             if Abs(list1[i]-x[i]) <= epsilon:
@@ -51,15 +51,9 @@ for k in range(k,maxiter):
     k = k + 1 
     
 print('end')
-
-#for i in range(0,len(L)):
-#    plt.subplot(2,3,i)
-#    plt.scatter(datax,dataq)
-#    plt.scatter(datax,datap)
-
-plt.scatter(datax,dataq2)
+plt.scatter(datax,dataq)
 plt.show()
-plt.scatter(datax,datap2)
+plt.scatter(datax,datap)
 plt.show()
 
 # show time elapsed
@@ -127,4 +121,3 @@ creasym2(cs,'cs',blist)
 for i in range(0,len(blist)):
     cs[i] = 0.5*(dd[i])**2
 print('consumer surplus ='+str(cs))
-
