@@ -24,7 +24,7 @@ Change the starting values and epsilon.\
 Change the example file (def_class.py) if necessary:\
   Change number of manufacturers, retailers, markets (and connections between them using classes "Make, Retail and Buy"\
   Change the functions (production, cost and demand)\
-Run the run2.py or run.py.\
+Run the run2.py or run3.py.\
 
 # Coming Soon:
 More examples + descriptions\
