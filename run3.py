@@ -10,12 +10,11 @@ import matplotlib.pyplot as plt
 import timeit #use timer
 start_time = timeit.default_timer()
 
-from def_class8 import *
+from def_class4 import *
 from starting import *
 
+datay = [[] for i in range(0,len(list0))]
 datax=[]
-dataq=[]
-datap=[]
 
 # take values from starting point
 list1=compare3(list0)
@@ -46,15 +45,16 @@ for k in range(k,maxiter):
         break
 
     datax.append(k)
-    dataq.append(list1[0])
-    datap.append(list1[-1])
+    for i in range(0,len(list0)):
+        datay[i].append(list1[i])
     k = k + 1 
     
 print('end')
-plt.scatter(datax,dataq)
-plt.show()
-plt.scatter(datax,datap)
-plt.show()
+
+for i in range(0,len(list0)):
+    plt.scatter(datax,datay[i])
+    plt.title(str(orglist[i]), fontdict=None, loc='center', pad=None)
+    plt.show()
 
 # show time elapsed
 elapsed = timeit.default_timer() - start_time

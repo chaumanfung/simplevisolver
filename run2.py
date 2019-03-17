@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Mar  4 11:58:39 2019
+Created on Sun Mar 17 14:53:34 2019
 
 @author: chauman.fung@kuleuven.be
 """
@@ -10,12 +10,12 @@ import matplotlib.pyplot as plt
 import timeit #use timer
 start_time = timeit.default_timer()
 
-from def_class7 import *
+from def_class4 import *
 from starting import *
 
+datay = [[] for i in range(0,len(list0))]
 datax=[]
-dataq=[]
-datap=[]
+
 
 # take values from starting point
 list1=compare2(list0)
@@ -46,21 +46,19 @@ for k in range(k,maxiter):
         break
 
     datax.append(k)
-    dataq.append(list1[0])
-    datap.append(list1[-1])
+    for i in range(0,len(list0)):
+        datay[i].append(list1[i])
+
     k = k + 1 
     
 print('end')
 
-#for i in range(0,len(L)):
-#    plt.subplot(2,3,i)
-#    plt.scatter(datax,dataq)
-#    plt.scatter(datax,datap)
 
-plt.scatter(datax,dataq2)
-plt.show()
-plt.scatter(datax,datap2)
-plt.show()
+for i in range(0,len(list0)):
+    plt.scatter(datax,datay[i])
+    plt.title(str(orglist[i]), fontdict=None, loc='center', pad=None)
+    plt.show()
+
 
 # show time elapsed
 elapsed = timeit.default_timer() - start_time
