@@ -1,6 +1,7 @@
 # simplevisolver (created in Python 2.7)
 restructured on 10 march \
 calculations of profits and surpluses added.\
+plots of all variables showing convergence.\
 
 # modified projection method and Euler method
 run2.py (Euler method)\
@@ -30,6 +31,6 @@ Run the run2.py or run3.py.\
 More examples + descriptions\
 Speed things up\
 Trust region algorithm\
-Add subplots on speed of convergence\
+
 
 
