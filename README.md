@@ -5,7 +5,7 @@ Allow stepsize (alpha) to adjust in iterations:\
 a/ decrease alpha when values are oscillating\
 b/ decrease alpha in later iterations (close to solution)\
 c/ decrease alpha when the values become zero\
-d/ increase alpha if otherwise\
+d/ increase alpha, otherwise\
 (This allows us to start with a large stepsize and decrease when things go wrong)\
 profits ,etc are shown with the results.\
 plots of different variables and step size are shown with the results.
