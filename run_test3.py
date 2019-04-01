@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Mar 10 12:22:28 2019
+Created on Sun Mar 17 14:53:34 2019
 
 @author: chauman.fung@kuleuven.be
 """
@@ -10,13 +10,13 @@ import matplotlib.pyplot as plt
 import timeit #use timer
 start_time = timeit.default_timer()
 
-from def_class_SCE import *
+from def_class5 import *
 from starting import *
 
-datay = [[] for i in range(0,len(list0))]
+
+datay = [[] for i in range(0,len(list0)+1)]
 datax=[]
 
-# take values from starting point
 list1=compare3(list0,alpha)
 
 # start iterations
@@ -32,8 +32,24 @@ k=2
 for k in range(2,maxiter):
     print('number of iterations=',k)    
     x=list(list1)
+    for i in range(0,len(L)):
+        if list1[i]==0: #hit lower bound? lower alpha
+            alpha = alpha- 0.01/len(L)
+            alpha=max(0+epsilon,alpha)
+        elif 100>k>5 and abs(datay[i][k-3]-datay[i][k-5])<0.1 and abs(datay[i][k-4]-datay[i][k-6])<0.1: #oscillating in earlier iterations? lower alpha
+            alpha = alpha- 0.001/len(L)
+            alpha=max(0+epsilon,alpha)
+        elif k>100 and abs(datay[i][k-3]-datay[i][k-5])<0.0001 and abs(datay[i][k-4]-datay[i][k-6])<0.0001: #close to convergence in later iterations? lower alpha
+            alpha = alpha- 0.001/len(L)
+            alpha=max(0+epsilon,alpha)
+        elif k>5 and abs(datay[i][k-3]-datay[i][k-4])>3: #divergence? lower alpha
+            alpha = alpha- 0.1/len(L)
+            alpha=max(0+epsilon,alpha)
+        else:
+            alpha = alpha + 0.0001/len(L) #else, increase alpha to speed up convergence
+            alpha=min(0.3,alpha)
     compare3(list1,alpha)
-    if sum(bool(Abs(list1[i]-x[i]) < epsilon) for i in range(0,len(L)))<len(L):
+    if sum(bool(Abs(list1[i]-x[i]) < epsilon) for i in range(0,len(L)))<len(L) :
         for i in range(0,len(L)):       
             if Abs(list1[i]-x[i]) <= epsilon:
                 print(str(list1[i]),str(x[i])+': diff<epsilon ')
@@ -47,14 +63,20 @@ for k in range(2,maxiter):
     datax.append(k)
     for i in range(0,len(list0)):
         datay[i].append(list1[i])
+    datay[i+1].append(alpha)
     k = k + 1 
     
 print('end')
 
 for i in range(0,len(list0)):
     plt.scatter(datax,datay[i])
-    plt.title(str(orglist[i]), fontdict=None, loc='center', pad=None)
+    plt.title(str(orglist[i]), fontdict=None, loc='center', pad=None) 
     plt.show()
+
+plt.scatter(datax,datay[i+1])
+plt.title('alpha', fontdict=None, loc='center', pad=None)
+plt.show()
+
 
 # show time elapsed
 elapsed = timeit.default_timer() - start_time
@@ -121,3 +143,4 @@ creasym2(cs,'cs',blist)
 for i in range(0,len(blist)):
     cs[i] = 0.5*(dd[i])**2
 print('consumer surplus ='+str(cs))
+
