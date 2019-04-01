@@ -1,6 +1,6 @@
 # simplevisolver (created in Python 2.7)
 changes on 1 april  \
-Changes:\
+Changes:
 
 Allow stepsize (alpha) to adjust in iterations:\
 a/ decrease alpha when values are oscillating\
