@@ -10,15 +10,15 @@ import matplotlib.pyplot as plt
 import timeit #use timer
 start_time = timeit.default_timer()
 
-from def_class4 import *
+from def_class1 import *
 from starting import *
 
 datay = [[] for i in range(0,len(list0))]
 datax=[]
 
-
+#alpha=0.05
 # take values from starting point
-list1=compare2(list0)
+list1=compare2(list0,alpha)
 
 # start iterations
 print('number of iterations=',1) 
@@ -30,10 +30,10 @@ for i in range(0,len(L)):
 
 k=2
 
-for k in range(k,maxiter):
+for k in range(2,maxiter):
     print('number of iterations=',k)    
     x=list(list1)
-    compare2(list1)
+    compare2(list1,alpha)
     if sum(bool(Abs(list1[i]-x[i]) < epsilon) for i in range(0,len(L)))<len(L):
         for i in range(0,len(L)):       
             if Abs(list1[i]-x[i]) <= epsilon:

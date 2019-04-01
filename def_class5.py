@@ -8,7 +8,6 @@ import itertools
 from itertools import count
 from sympy import diff,symbols,Function,Max
 import numpy as np
-from starting import alpha
 
 # construct classes
 # manufacturers
@@ -216,15 +215,15 @@ def L_sub_all(sublist):
         Lsub[j]=sub_all(j,sublist)
     return Lsub
 
-def compare2(sublist):
+def compare2(sublist,alpha):
     for i in range(0,len(L)):
         Llist = L_sub_all(sublist)
         oplist[i] = Max(0, sublist[i] - alpha*Llist[i])
     return oplist
 
-def compare3(sublist):
+def compare3(sublist,alpha):
     for i in range(0,len(L)):
-        step2 = compare2(sublist)
+        step2 = compare2(sublist,alpha)
         Lstep2=L_sub_all(step2)
         oplist1[i] = Max(0, sublist[i] - alpha*Lstep2[i])
     return oplist1
