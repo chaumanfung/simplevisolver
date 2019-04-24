@@ -1,4 +1,8 @@
 # simplevisolver (created in Python 2.7)
+Additions on 24 april:
+
+Three examples added with description\
+
 Changes on 1 april:
 
 Allow stepsize (alpha) to adjust in iterations:\
@@ -21,10 +25,14 @@ run3.py (modified projection method; in chapter and slides)
   Examples in Nagurney A, 2006. Supply Chain Network Economics (Chapter 2)\
   (def_class1.py, def_class2.py, def_class3.py, def_class4.py, def_class5.py, def_class6.py, def_class7.py, def_class8.py)\
   direct link between manufacturer and market \
-  (def_class_SCE.py)
- 
-  more examples (coming soon)\
-  brexit, expiration of patent, off-hour delivery regulation, lockers and drones, demand elasticities
+  (def_class_SCE.py)\
+  
+  set_a.doc: Brexit\
+  (def_class222.py, def_class222b.py)\
+  set_b.doc: Expiration of patent\
+  (def_class121.py, def_class121b.py)\
+  set_c.doc: relocation of wholesale outlet\
+  (def_class241.py, def_class241b.py)
 
 # starting.py
 contains starting values, epsilon and max number of iterations
@@ -37,9 +45,7 @@ Change the example file (def_class.py) if necessary:\
   Change the functions (production, cost and demand)\
 Run run_test.py, run_test3.py, run2.py or run3.py.
 
-# Coming Soon:
-More examples + descriptions\
-Speed things up
+
 
 
 
