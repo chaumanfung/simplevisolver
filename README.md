@@ -1,11 +1,12 @@
 # simplevisolver (created in Python 2.7)
 Additions on 24 april:
 
-Three examples added with description\
+Three examples added with descriptions
 
 Changes on 1 april:
 
 Allow stepsize (alpha) to adjust in iterations:\
+(CAUTION: The lower bound of stepsize should not be too low, in case the iterations stop prematurely)\
 a/ decrease alpha when values are oscillating\
 b/ decrease alpha in later iterations (close to solution)\
 c/ decrease alpha when the values become zero\
@@ -25,13 +26,13 @@ run3.py (modified projection method; in chapter and slides)
   Examples in Nagurney A, 2006. Supply Chain Network Economics (Chapter 2)\
   (def_class1.py, def_class2.py, def_class3.py, def_class4.py, def_class5.py, def_class6.py, def_class7.py, def_class8.py)\
   direct link between manufacturer and market \
-  (def_class_SCE.py)\
+  (def_class_SCE.py)
   
-  set_a.doc: Brexit\
+  set_a.docx: Brexit\
   (def_class222.py, def_class222b.py)\
-  set_b.doc: Expiration of patent\
+  set_b.docx: Expiration of patent\
   (def_class121.py, def_class121b.py)\
-  set_c.doc: relocation of wholesale outlet\
+  set_c.docx: Relocation of wholesale outlet\
   (def_class241.py, def_class241b.py)
 
 # starting.py
