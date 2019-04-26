@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import timeit #use timer
 start_time = timeit.default_timer()
 
-from def_class_SCE import *
+from def_class121 import *
 from starting import *
 
 datay = [[] for i in range(0,len(list0))]
@@ -32,7 +32,7 @@ k=2
 for k in range(2,maxiter):
     print('number of iterations=',k)    
     x=list(list1)
-    compare3(list1,alpha)
+    list1=compare3(list1,alpha)
     if sum(bool(Abs(list1[i]-x[i]) < epsilon) for i in range(0,len(L)))<len(L):
         for i in range(0,len(L)):       
             if Abs(list1[i]-x[i]) <= epsilon:
@@ -65,7 +65,7 @@ print('elasped time='+str(elapsed)+'s')
 #########################################################################
 
 # match solutions to variable list
-solmatch = {orglist[i]: oplist[i] for i in range(0,len(L))}
+solmatch = {orglist[i]: list1[i] for i in range(0,len(L))}
 
 # report prices 
 pm = []

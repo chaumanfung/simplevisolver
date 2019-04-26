@@ -9,18 +9,20 @@ import numpy as np
 # set starting values
 
 #list0 = [11,11,11,11] #example 2.1
-#list0 = [11,11,11,11,11,11,11] #example 2.2
+list0 = [11,11,11,11,11,11,11] #example 2.2, class121
 #list0 = [11,11,11,11,11] #example 2.3
 #list0 = [11,11,11,11,11,11] #dxample 2.4
-list0 = np.ones(2*2+2*2+2+2) #example 2.5, 2.6
+#list0 = np.ones(2*2+2*2+2+2) #example 2.5, 2.6, class222, class222b
 #list0 = np.ones(2*3+3*2+3+2) #example 2.7
 #list0 = np.ones(3*2+2*3+2+3) #example 2.8
 #list0 = np.ones(1*3+3*1+3+1) #example SCE
+#list0 = np.ones(2*2+2*1+2+1) #class121b, class241b
+#list0 = np.ones(2*4+4*1+4+1) #class241
 
 # set alpha
-#alpha=0.05 #example 2.1,2.2,2.3,2.4,2.5,2.6,2.8
+alpha=0.05 #example 2.1,2.2,2.3,2.4,2.5,2.6,2.8
 #alpha=0.03 #example 2.7
-alpha=0.3
+#alpha=0.3
 
 # set stopping criteria
 epsilon = 0.0001

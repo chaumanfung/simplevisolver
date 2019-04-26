@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import timeit #use timer
 start_time = timeit.default_timer()
 
-from def_class_brexit_post import *
+from def_class7 import *
 from starting import *
 
 
@@ -25,30 +25,31 @@ for i in range(0,len(L)):
     if Abs(list1[i]-list0[i]) <= epsilon:
         print(str(list0[i]),str(list1[i])+': diff < epsilon')
     else: 
-        print(str(list0[i]),str(list1[i])+': diff > epsilon, continue')
+        print(str(list0[i]),str(list1[i]), ': diff > epsilon, continue')
 
 k=2
 
 for k in range(2,maxiter):
     print('number of iterations=',k)    
     x=list(list1)
+    
     for i in range(0,len(L)):
         if list1[i]==0: #hit lower bound? lower alpha
             alpha = alpha- 0.01/len(L)
-            alpha=max(0+epsilon,alpha)
+            alpha=max(0+epsilon*100,alpha)
         elif 100>k>5 and abs(datay[i][k-3]-datay[i][k-5])<0.1 and abs(datay[i][k-4]-datay[i][k-6])<0.1: #oscillating in earlier iterations? lower alpha
             alpha = alpha- 0.001/len(L)
-            alpha=max(0+epsilon,alpha)
+            alpha=max(0+epsilon*100,alpha)
         elif k>100 and abs(datay[i][k-3]-datay[i][k-5])<0.0001 and abs(datay[i][k-4]-datay[i][k-6])<0.0001: #close to convergence in later iterations? lower alpha
             alpha = alpha- 0.001/len(L)
-            alpha=max(0+epsilon,alpha)
+            alpha=max(0+epsilon*100,alpha)
         elif k>5 and abs(datay[i][k-3]-datay[i][k-4])>3: #divergence? lower alpha
             alpha = alpha- 0.1/len(L)
-            alpha=max(0+epsilon,alpha)
+            alpha=max(0+epsilon*100,alpha)
         else:
             alpha = alpha + 0.001/len(L) #else, increase alpha to speed up convergence
             alpha=min(0.3,alpha)
-    compare2(list1,alpha)
+    list1=compare2(list1,alpha)
     if sum(bool(Abs(list1[i]-x[i]) < epsilon) for i in range(0,len(L)))<len(L) :
         for i in range(0,len(L)):       
             if Abs(list1[i]-x[i]) <= epsilon:
@@ -86,7 +87,7 @@ print('elasped time='+str(elapsed)+'s')
 #########################################################################
 
 # match solutions to variable list
-solmatch = {orglist[i]: oplist[i] for i in range(0,len(L))}
+solmatch = {orglist[i]: list1[i] for i in range(0,len(L))}
 
 # report prices 
 pm = []

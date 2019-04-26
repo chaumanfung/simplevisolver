@@ -6,7 +6,7 @@ Created on Sun Mar 10 17:44:29 2019
 
 import itertools
 from itertools import count
-from sympy import diff,symbols,Function,Max
+from sympy import symbols,Function,lambdify
 import numpy as np
 
 # construct classes
@@ -174,48 +174,24 @@ t2qf = list(itertools.chain.from_iterable(t2q))
 orglist = [t1qf,t2qf,gamma,rho3]
 orglist = list(itertools.chain.from_iterable(orglist))
 
-t1qsub=[]
-t1qsub=creasym(t1qsub,'t1qsub',mlist,rlist)
-t2qsub=[]
-t2qsub=creasym(t2qsub,'t2qsub',rlist,blist)
-rho3sub=[]
-rho3sub=creasym2(rho3sub,'rho3sub',blist)
-gammasub=[]
-gammasub=creasym2(gammasub,'gammasub',rlist)
 
-sublist = []
-t1qsubf = list(itertools.chain.from_iterable(t1qsub)) 
-t2qsubf = list(itertools.chain.from_iterable(t2qsub))
-sublist = [t1qsubf,t2qsubf,gammasub,rho3sub]
-sublist = list(itertools.chain.from_iterable(sublist))       
+def sub_all(sublist):
+    lamb=lambdify([orglist],L)
+    return lamb(sublist)
 
-oplist =np.ones(len(L))
-oplist1 = np.ones(len(L))
-      
-# create a substitution function for all
-def sub_all(ele,sublist):
-    Ltemp=Function('Ltemp')
-    Ltemp=L[ele].subs(orglist[0],sublist[0])
-    for i in range(1,len(L)):
-        Ltemp=Ltemp.subs(orglist[i],sublist[i])
-    return Ltemp
-
-def L_sub_all(sublist):
-    Lsub=[]  
-    for j in range(0,len(L)):
-        Lsub.append(Function('Lsub'+str(j)))
-        Lsub[j]=sub_all(j,sublist)
-    return Lsub
 
 def compare2(sublist,alpha):
-    for i in range(0,len(L)):
-        Llist = L_sub_all(sublist)
-        oplist[i] = Max(0, sublist[i] - alpha*Llist[i])
+    Llist = sub_all(sublist)
+    Llist = np.asarray(Llist)
+    oplist = sublist - alpha * Llist
+    oplist = oplist.clip(0)
     return oplist
+    
 
 def compare3(sublist,alpha):
-    for i in range(0,len(L)):
-        step2 = compare2(sublist,alpha)
-        Lstep2=L_sub_all(step2)
-        oplist1[i] = Max(0, sublist[i] - alpha*Lstep2[i])
+    step2 = compare2(sublist,alpha)
+    Lstep2=sub_all(step2)
+    Lstep2 = np.asarray(Lstep2)
+    oplist1 = sublist - alpha * Lstep2
+    oplist1 = oplist1.clip(0)
     return oplist1
