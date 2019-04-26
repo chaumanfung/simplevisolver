@@ -1,4 +1,9 @@
 # simplevisolver (created in Python 2.7)
+changes on 26 april:
+
+use "lambdify" to replace "subs" in sympy\
+use numpy arrays instead of lists (fewer for-loops)
+
 Additions on 24 april:
 
 Three examples added with descriptions
