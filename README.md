@@ -2,7 +2,9 @@
 changes on 26 april:
 
 use "lambdify" to replace "subs" in sympy\
-use numpy arrays instead of lists (fewer for-loops)
+use numpy arrays instead of lists (fewer for-loops)\
+Computation time has been greatly reduced, especially for the more complicated examples (e.g. 2.7) using modified projection method. 
+
 
 Additions on 24 april:
 
